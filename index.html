@@ -1,564 +1,632 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Ruby Elaine Aguilera — Portfolio</title>
-   <style>
-       * { margin: 0; padding: 0; box-sizing: border-box; }
-       :root {
-           --accent: #5c3fa0;
-           --accent-light: #ede9fb;
-           --accent-mid: #a197d8;
-           --text: #1a1a2e;
-           --muted: #555;
-           --border: #e0ddf5;
-           --bg: #fff;
-           --card-bg: #faf9ff;
-           --tag-bg: #ede9fb;
-           --tag-text: #3c3489;
-       }
-       body {
-           font-family: 'Segoe UI', Arial, sans-serif;
-           color: var(--text);
-           background: var(--bg);
-           line-height: 1.7;
-       }
-       /* HEADER */
-       header {
-           background: linear-gradient(135deg, #2d1b69 0%, #5c3fa0 60%, #8b6bbf 100%);
-           color: #fff;
-           padding: 3rem 2rem 2.5rem;
-           text-align: center;
-       }
-       .profile-pic-placeholder {
-           width: 110px;
-           height: 110px;
-           border-radius: 50%;
-           background: rgba(255,255,255,0.2);
-           border: 3px solid rgba(255,255,255,0.5);
-           margin: 0 auto 1rem;
-           display: flex;
-           align-items: center;
-           justify-content: center;
-           font-size: 38px;
-           font-weight: 600;
-           letter-spacing: 1px;
-           color: #fff;
-           overflow: hidden;
-       }
-       .profile-pic-placeholder img {
-           width: 100%;
-           height: 100%;
-           object-fit: cover;
-           border-radius: 50%;
-       }
-       .upload-hint {
-           font-size: 11px;
-           color: rgba(255,255,255,0.6);
-           margin-top: 0.25rem;
-           font-style: italic;
-       }
-       header h1 {
-           font-size: 2rem;
-           font-weight: 700;
-           margin-bottom: 0.25rem;
-       }
-       header .tagline {
-           font-size: 1rem;
-           opacity: 0.85;
-           margin-bottom: 1.25rem;
-       }
-       nav {
-           display: flex;
-           flex-wrap: wrap;
-           justify-content: center;
-           gap: 0.5rem;
-           margin-top: 1rem;
-       }
-       nav a {
-           color: #fff;
-           text-decoration: none;
-           padding: 0.35rem 1rem;
-           border: 1px solid rgba(255,255,255,0.4);
-           border-radius: 999px;
-           font-size: 0.875rem;
-           transition: background 0.2s;
-       }
-       nav a:hover { background: rgba(255,255,255,0.2); }
-       /* LAYOUT */
-       main {
-           max-width: 860px;
-           margin: 0 auto;
-           padding: 0 1.5rem 3rem;
-       }
-       section {
-           padding: 2.5rem 0 1.5rem;
-           border-bottom: 1px solid var(--border);
-       }
-       section:last-child { border-bottom: none; }
-       h2 {
-           font-size: 1.35rem;
-           font-weight: 700;
-           color: var(--accent);
-           margin-bottom: 1.25rem;
-           display: flex;
-           align-items: center;
-           gap: 0.6rem;
-       }
-       h2::before {
-           content: '';
-           display: inline-block;
-           width: 4px;
-           height: 1.2em;
-           background: var(--accent);
-           border-radius: 2px;
-       }
-       /* ABOUT */
-       .about-grid {
-           display: grid;
-           grid-template-columns: 1fr 1fr;
-           gap: 1rem;
-       }
-       .stat-card {
-           background: var(--accent-light);
-           border-radius: 10px;
-           padding: 1rem 1.25rem;
-           text-align: center;
-       }
-       .stat-card .number {
-           font-size: 1.75rem;
-           font-weight: 700;
-           color: var(--accent);
-       }
-       .stat-card .label {
-           font-size: 0.8rem;
-           color: var(--tag-text);
-           margin-top: 0.1rem;
-       }
-       .about-bio {
-           margin-bottom: 1.25rem;
-           color: #333;
-           font-size: 0.97rem;
-       }
-       /* SKILLS TAGS */
-       .tags {
-           display: flex;
-           flex-wrap: wrap;
-           gap: 0.5rem;
-           margin-top: 0.75rem;
-       }
-       .tag {
-           background: var(--tag-bg);
-           color: var(--tag-text);
-           border-radius: 999px;
-           padding: 0.25rem 0.85rem;
-           font-size: 0.82rem;
-           font-weight: 500;
-       }
-       /* ACTIVITY CARDS */
-       .activity-card {
-           background: var(--card-bg);
-           border: 1px solid var(--border);
-           border-radius: 12px;
-           padding: 1.25rem 1.5rem;
-           margin-bottom: 1rem;
-       }
-       .activity-card h3 {
-           font-size: 1.05rem;
-           font-weight: 700;
-           margin-bottom: 0.25rem;
-           color: var(--text);
-       }
-       .activity-card .role-badge {
-           display: inline-block;
-           background: var(--accent);
-           color: #fff;
-           border-radius: 999px;
-           padding: 0.15rem 0.75rem;
-           font-size: 0.75rem;
-           font-weight: 600;
-           margin-bottom: 0.75rem;
-       }
-       .activity-card .year-badge {
-           display: inline-block;
-           background: #f0ecfe;
-           color: var(--accent);
-           border-radius: 999px;
-           padding: 0.15rem 0.75rem;
-           font-size: 0.75rem;
-           font-weight: 500;
-           margin-left: 0.5rem;
-       }
-       .activity-card ul {
-           padding-left: 1.2rem;
-           font-size: 0.92rem;
-           color: #333;
-       }
-       .activity-card ul li {
-           margin-bottom: 0.4rem;
-       }
-       .activity-card .hours {
-           margin-top: 0.75rem;
-           font-size: 0.82rem;
-           color: var(--muted);
-           font-style: italic;
-       }
-       /* AWARD HIGHLIGHT */
-       .award-box {
-           background: #fff9e6;
-           border: 1px solid #f0d87a;
-           border-left: 4px solid #c9a500;
-           border-radius: 10px;
-           padding: 1rem 1.25rem;
-           margin-bottom: 1rem;
-           font-size: 0.93rem;
-       }
-       .award-box strong { color: #7a5c00; }
-       /* CREDENTIALS */
-       .cred-list {
-           list-style: none;
-           padding: 0;
-       }
-       .cred-list li {
-           display: flex;
-           align-items: flex-start;
-           gap: 0.75rem;
-           padding: 0.75rem 0;
-           border-bottom: 1px solid var(--border);
-           font-size: 0.93rem;
-       }
-       .cred-list li:last-child { border-bottom: none; }
-       .cred-icon {
-           width: 32px;
-           height: 32px;
-           border-radius: 8px;
-           background: var(--accent-light);
-           display: flex;
-           align-items: center;
-           justify-content: center;
-           font-size: 16px;
-           flex-shrink: 0;
-       }
-       .cred-info .cred-title { font-weight: 600; color: var(--text); }
-       .cred-info .cred-date { font-size: 0.8rem; color: var(--muted); }
-       .badge-placeholder {
-           display: inline-block;
-           margin-top: 0.3rem;
-           background: #f3f3f3;
-           border: 1.5px dashed #ccc;
-           border-radius: 8px;
-           padding: 0.3rem 0.8rem;
-           font-size: 0.76rem;
-           color: #999;
-           cursor: default;
-       }
-       /* CONTACT */
-       .contact-grid {
-           display: grid;
-           grid-template-columns: 1fr 1fr;
-           gap: 0.75rem;
-       }
-       .contact-item {
-           background: var(--card-bg);
-           border: 1px solid var(--border);
-           border-radius: 10px;
-           padding: 0.85rem 1rem;
-           font-size: 0.9rem;
-       }
-       .contact-item .contact-label {
-           font-size: 0.75rem;
-           color: var(--muted);
-           margin-bottom: 0.2rem;
-       }
-       .contact-item a {
-           color: var(--accent);
-           text-decoration: none;
-           font-weight: 500;
-       }
-       .contact-item .placeholder-link {
-           color: #bbb;
-           font-style: italic;
-       }
-       /* FOOTER */
-       footer {
-           text-align: center;
-           padding: 1.5rem;
-           background: #f7f5ff;
-           color: var(--muted);
-           font-size: 0.85rem;
-           border-top: 1px solid var(--border);
-       }
-       /* RESPONSIVE */
-       @media (max-width: 600px) {
-           .about-grid, .contact-grid { grid-template-columns: 1fr; }
-           header h1 { font-size: 1.5rem; }
-       }
-   </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruby Elaine Aguilera — Portfolio</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+ 
+        :root {
+            --accent: #5c3fa0;
+            --accent-light: #ede9fb;
+            --accent-mid: #a197d8;
+            --text: #1a1a2e;
+            --muted: #555;
+            --border: #e0ddf5;
+            --bg: #fff;
+            --card-bg: #faf9ff;
+            --tag-bg: #ede9fb;
+            --tag-text: #3c3489;
+        }
+ 
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.7;
+        }
+ 
+        /* HEADER */
+        header {
+            background: linear-gradient(135deg, #2d1b69 0%, #5c3fa0 60%, #8b6bbf 100%);
+            color: #fff;
+            padding: 3rem 2rem 2.5rem;
+            text-align: center;
+        }
+ 
+        .profile-pic-placeholder {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            border: 3px solid rgba(255,255,255,0.5);
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 38px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #fff;
+            overflow: hidden;
+        }
+ 
+        .profile-pic-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+ 
+        .upload-hint {
+            font-size: 11px;
+            color: rgba(255,255,255,0.6);
+            margin-top: 0.25rem;
+            font-style: italic;
+        }
+ 
+        header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+ 
+        header .tagline {
+            font-size: 1rem;
+            opacity: 0.85;
+            margin-bottom: 1.25rem;
+        }
+ 
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+ 
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.35rem 1rem;
+            border: 1px solid rgba(255,255,255,0.4);
+            border-radius: 999px;
+            font-size: 0.875rem;
+            transition: background 0.2s;
+        }
+ 
+        nav a:hover { background: rgba(255,255,255,0.2); }
+ 
+        /* LAYOUT */
+        main {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 0 1.5rem 3rem;
+        }
+ 
+        section {
+            padding: 2.5rem 0 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+ 
+        section:last-child { border-bottom: none; }
+ 
+        h2 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+ 
+        h2::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 1.2em;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+ 
+        /* ABOUT */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+ 
+        .stat-card {
+            background: var(--accent-light);
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            text-align: center;
+        }
+ 
+        .stat-card .number {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+ 
+        .stat-card .label {
+            font-size: 0.8rem;
+            color: var(--tag-text);
+            margin-top: 0.1rem;
+        }
+ 
+        .about-bio {
+            margin-bottom: 1.25rem;
+            color: #333;
+            font-size: 0.97rem;
+        }
+ 
+        /* SKILLS TAGS */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+        }
+ 
+        .tag {
+            background: var(--tag-bg);
+            color: var(--tag-text);
+            border-radius: 999px;
+            padding: 0.25rem 0.85rem;
+            font-size: 0.82rem;
+            font-weight: 500;
+        }
+ 
+        /* ACTIVITY CARDS */
+        .activity-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1rem;
+        }
+ 
+        .activity-card h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+            color: var(--text);
+        }
+ 
+        .activity-card .role-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            border-radius: 999px;
+            padding: 0.15rem 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+ 
+        .activity-card .year-badge {
+            display: inline-block;
+            background: #f0ecfe;
+            color: var(--accent);
+            border-radius: 999px;
+            padding: 0.15rem 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-left: 0.5rem;
+        }
+ 
+        .activity-card ul {
+            padding-left: 1.2rem;
+            font-size: 0.92rem;
+            color: #333;
+        }
+ 
+        .activity-card ul li {
+            margin-bottom: 0.4rem;
+        }
+ 
+        .activity-card .hours {
+            margin-top: 0.75rem;
+            font-size: 0.82rem;
+            color: var(--muted);
+            font-style: italic;
+        }
+ 
+        /* AWARD HIGHLIGHT */
+        .award-box {
+            background: #fff9e6;
+            border: 1px solid #f0d87a;
+            border-left: 4px solid #c9a500;
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1rem;
+            font-size: 0.93rem;
+        }
+ 
+        .award-box strong { color: #7a5c00; }
+ 
+        /* CREDENTIALS */
+        .cred-list {
+            list-style: none;
+            padding: 0;
+        }
+ 
+        .cred-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.93rem;
+        }
+ 
+        .cred-list li:last-child { border-bottom: none; }
+ 
+        .cred-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: var(--accent-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+ 
+        .cred-info .cred-title { font-weight: 600; color: var(--text); }
+        .cred-info .cred-date { font-size: 0.8rem; color: var(--muted); }
+ 
+        .badge-placeholder {
+            display: inline-block;
+            margin-top: 0.3rem;
+            background: #f3f3f3;
+            border: 1.5px dashed #ccc;
+            border-radius: 8px;
+            padding: 0.3rem 0.8rem;
+            font-size: 0.76rem;
+            color: #999;
+            cursor: default;
+        }
+ 
+        /* CONTACT */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+        }
+ 
+        .contact-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 0.85rem 1rem;
+            font-size: 0.9rem;
+        }
+ 
+        .contact-item .contact-label {
+            font-size: 0.75rem;
+            color: var(--muted);
+            margin-bottom: 0.2rem;
+        }
+ 
+        .contact-item a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+ 
+        .contact-item .placeholder-link {
+            color: #bbb;
+            font-style: italic;
+        }
+ 
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background: #f7f5ff;
+            color: var(--muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+        }
+ 
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+            .about-grid, .contact-grid { grid-template-columns: 1fr; }
+            header h1 { font-size: 1.5rem; }
+        }
+    </style>
 </head>
 <body>
-   <!-- HEADER -->
-   <header>
-       <!-- Replace 'REA' with an <img> tag once you have a photo -->
-       <div class="profile-pic-placeholder"><img src="http:///media/fuse/drivefs-d9272547f62d1d3190e076ede37d62a7/root/Screenshot%202026-05-06%201.42.10%20PM.png" alt="Profile Picture"></div>
-       <h1>Ruby Elaine Aguilera</h1>
-       <p class="tagline">Engineer · Maker · Community Leader · Patrick Henry High School, San Diego CA</p>
-       <nav>
-           <a href="#about">About</a>
-           <a href="#robotics">Robotics</a>
-           <a href="#craft-club">Craft Club</a>
-           <a href="#library">Library</a>
-           <a href="#internship">Internship</a>
-           <a href="#credentials">Credentials</a>
-           <a href="#contact">Contact</a>
-       </nav>
-   </header>
-   <main>
-       <!-- ABOUT -->
-       <section id="about">
-           <h2>About Me</h2>
-           <p class="about-bio">
-               I'm a current junior at Patrick Henry High School and this is my website! The purpose of this is to showcase pictures, quotes from people I worked with and projects I made.
-              
-           My plan is to pursue biomedical engineering in college. Throughout my time in highschool, I have completed two engineering pathways — Computer Science and Engineering Technology. Over the past three years, I've operated industrial machines, led a student club from the ground up, completed an selective environmental summer program, and served as a grant lead for a nonprofit. I love building things: whether that's a robot chassis, games using Java, or a community.
-              
-           </p>
-           <div class="about-grid" style="margin-top:1.25rem;">
-               <div class="stat-card">
-                   <div class="number">~500+</div>
-                   <div class="label">Personal volunteer hours (est.)</div>
-               </div>
-               <div class="stat-card">
-                   <div class="number">900+</div>
-                   <div class="label">Club volunteer hours generated</div>
-               </div>
-               <div class="stat-card">
-                   <div class="number">3</div>
-                   <div class="label">Years in Patribot Robotics</div>
-               </div>
-               <div class="stat-card">
-                   <div class="number">52</div>
-                   <div class="label">Craft Club members (2025–26)</div>
-               </div>
-           </div>
-           <div style="margin-top:1.25rem;">
-               <strong style="font-size:0.85rem; color:var(--muted);">SKILLS &amp; INTERESTS</strong>
-               <div class="tags">
-                   <span class="tag">Lathe Machine</span>
-                   <span class="tag">Mill Machine</span>
-                   <span class="tag">Laser Cutter</span>
-                   <span class="tag">Screen Printing</span>
-                   <span class="tag">Grant Writing</span>
-                   <span class="tag">Community Organizing</span>
-                   <span class="tag">Java</span>
-                   <span class="tag">Python</span>
-                   <span class="tag">CAD / Onshape</span>
-                   <span class="tag">Crochet</span>
-                   <span class="tag">Distance Running</span>
-                   <span class="tag">Leadership</span>
-               </div>
-           </div>
-       </section>
-       <!-- ROBOTICS -->
-       <section id="robotics">
-           <h2>Patribot Robotics</h2>
-           <div class="activity-card">
-               <h3>Marketing Subteam <span class="year-badge">9th Grade · 2023–24</span></h3>
-               <span class="role-badge">Main Laser Cutter Operator</span>
-               <ul>
-                   <li>Produced over 300 theme pins using the laser cutter, from concept brainstorming through final fabrication.</li>
-                   <li>Executed screen printing for team apparel — garment positioning, template alignment, and quality checks.</li>
-                   <li>Created the team's "Terry the Dinosaur" pixel art image.</li>
-                   <li>Scouted 10 robots at a time during competitions (~1.5-hour intervals).</li>
-               </ul>
-               <p class="hours">⏱ 120 hours over 12 weeks — most hours on the marketing subteam</p>
-           </div>
-           <div class="activity-card">
-               <h3>Build Subteam <span class="year-badge">10th Grade · 2024–25</span></h3>
-               <span class="role-badge">Safety Lead &amp; Main Lathe Operator</span>
-               <ul>
-                   <li>Ordered and prepped emergency kits; enforced shop safety protocols (safety glasses, sleeve-rolling, machine safety).</li>
-                   <li>Operated the lathe to produce custom shafts, aluminum/plastic spacers, and tapped metal hex shafts for robots.</li>
-                   <li>Applied cleaning and maintenance techniques to protect equipment and extend machine life.</li>
-                   <li>Continued competition scouting (~1.5-hour intervals, 10 robots at a time).</li>
-               </ul>
-           </div>
-           <div class="activity-card">
-               <h3>Build Subteam <span class="year-badge">11th Grade · 2025–26</span></h3>
-               <span class="role-badge">Main Mill Operator &amp; Lathe Trainer</span>
-               <ul>
-                   <li>Milled chassis pieces and frame components for the robot's hopper connection.</li>
-                   <li>Trained 4 team members on the lathe — all got certified; 2 can now fix/upgrade the machine and train others independently.</li>
-                   <li>Expanded scouting role to include pit scouting, communicating with other teams (and trading a crochet turtle pin for a bedazzled robo-dolphin pin 🐬).</li>
-                   <li>Took initiative to teach new scouters how to use the scouting website; they became strong assets on the competition team.</li>
-               </ul>
-           </div>
-       </section>
-       <!-- CRAFT CLUB -->
-       <section id="craft-club">
-           <h2>Craft Club — Founder &amp; President</h2>
-           <div class="award-box">
-               <strong>🏆 Recognized by San Diego County Assessor Jorden Marks</strong> for Outstanding Community Leadership — the club accumulated 444 volunteer hours in its first 9 months. Ruby was personally recognized as founder and 2-year president.
-           </div>
-           <div class="activity-card">
-               <h3>Founded &amp; Led Craft Club <span class="year-badge">10th Grade · 2024–25</span></h3>
-               <span class="role-badge">Founder · President · VP · Secretary (Sem. 1)</span>
-               <ul>
-                   <li>Launched the club from scratch — handled officer roles, meetings, supply runs, and deliveries solo in Semester 1.</li>
-                   <li>Secured a <strong>$500 grant</strong> from the PHHS Foundation and free materials from CVS and Hobby Lobby (crepe paper, pin backings, paracords).</li>
-                   <li>Managed outreach to 10+ volunteer sites: Old Town Tequila Factory, Atria Collwood, Mission Trails Regional Park, Myron B. Green Elementary, San Diego Humane Society, and more.</li>
-                   <li>Maintained Instagram, Discord, and Google Classroom — posting 2x/week and writing step-by-step craft tutorials (crochet, DIY stickers, pipe cleaner flowers).</li>
-                   <li>Tracked accounting and prepared documentation for grant renewal.</li>
-               </ul>
-               <p class="hours">⏱ 444 volunteer hours from 44 members · Fall 2024 – Spring 2025</p>
-           </div>
-           <div class="activity-card">
-               <h3>Craft Club <span class="year-badge">11th Grade · 2025–26</span></h3>
-               <span class="role-badge">President</span>
-               <ul>
-                   <li>Expanded outreach to new sites: Link Crew, San Diego Floral Association Festival of Trees, San Carlos Branch Library, SD Community Garden, and more.</li>
-                   <li>Secured another <strong>$500 PHHS Foundation grant</strong> + free materials from Dollar Store and Home Depot (paint pallets, paint sticks, 30% off premium exterior paint).</li>
-                   <li>Grew membership to 52 students; managed 456.5 volunteer hours accumulated Fall 2025–Spring 2026.</li>
-               </ul>
-               <p class="hours">⏱ 456.5 volunteer hours from 52 members · Fall 2025 – Spring 2026</p>
-           </div>
-       </section>
-       <!-- LIBRARY -->
-       <section id="library">
-           <h2>Library Assistant</h2>
-           <div class="activity-card">
-               <h3>Patrick Henry High School Library</h3>
-               <span class="role-badge">Volunteer Assistant · 10th &amp; 11th Grade</span>
-               <ul>
-                   <li>Reported every school day from 7:30–8:30 AM.</li>
-                   <li>Decorated the library for seasonal holidays; redesigned learning library signs (in collaboration with Craft Club).</li>
-                   <li>Shelved books, managed computer and book check-in/check-out, and assisted during summer orientations.</li>
-               </ul>
-               <p class="hours">⏱ 180 hours per year (ongoing through Summer 2026)</p>
-           </div>
-       </section>
-       <!-- MISSION TRAILS -->
-       <section id="internship">
-           <h2>Programs &amp; Internships</h2>
-           <div class="activity-card">
-               <h3>Mission Trails Eco Ambassadors</h3>
-               <span class="role-badge">Summer Program · Certificate of Completion</span>
-               <ul>
-                   <li>Taught children about local animals and led nature walks and hikes through the park.</li>
-                   <li>Received one-on-one instruction from environmental professors on ecology, climate, and human impact on ecosystems.</li>
-               </ul>
-               <p class="hours">⏱ 32.5 hours of community service</p>
-           </div>
-           <div class="activity-card">
-               <h3>The STEM·E Youth Career Development Program</h3>
-               <span class="role-badge">Internship · Grant Lead · Nov 2025 – Est. Nov 2026</span>
-               <ul>
-                   <li>Onboarded new volunteers by training them on the full grant lifecycle: search → keyword list → letter of interest → proposal → submission.</li>
-                   <li>Led bi-weekly status check-ins for a 10-person grant writing team, keeping milestones and deadlines on track.</li>
-                   <li>Facilitated cross-functional group discussions to identify operational challenges and build peer support.</li>
-                   <li>Managed the team's Google Classroom workspace — keeping resources and documentation up to date for all members.</li>
-               </ul>
-               <p class="hours">⏱ 55 hours worked (biweekly meetings, leadership sessions, independent grant work)</p>
-           </div>
-       </section>
-       <!-- CREDENTIALS -->
-       <section id="credentials">
-           <h2>Credentials &amp; Certifications</h2>
-           <ul class="cred-list">
-               <li>
-                   <div class="cred-icon">☕</div>
-                   <div class="cred-info">
-                       <div class="cred-title">IT Specialist — Java</div>
-                       <div class="cred-date">Est. May 13, 2026</div>
-                       <span class="badge-placeholder">[ Upload digital badge image here ]</span>
-                   </div>
-               </li>
-               <li>
-                   <div class="cred-icon">🐍</div>
-                   <div class="cred-info">
-                       <div class="cred-title">IT Specialist — Python</div>
-                       <div class="cred-date">Est. May 21, 2026</div>
-                       <span class="badge-placeholder">[ Upload digital badge image here ]</span>
-                   </div>
-               </li>
-               <li>
-                   <div class="cred-icon">📐</div>
-                   <div class="cred-info">
-                       <div class="cred-title">Onshape CAD Certification</div>
-                       <div class="cred-date">Est. June 2026</div>
-                       <span class="badge-placeholder">[ Upload digital badge image here ]</span>
-                   </div>
-               </li>
-               <li>
-                   <div class="cred-icon">🏭</div>
-                   <div class="cred-info">
-                       <div class="cred-title">HASS Certification — Mill Machine (via EDD course)</div>
-                       <div class="cred-date">Est. Fall 2026 Semester 1</div>
-                       <span class="badge-placeholder">[ Upload digital badge image here ]</span>
-                   </div>
-               </li>
-               <li>
-                   <div class="cred-icon">⚙️</div>
-                   <div class="cred-info">
-                       <div class="cred-title">HASS Certification — Lathe Machine (via EDD course)</div>
-                       <div class="cred-date">Est. Fall 2026 Semester 1</div>
-                       <span class="badge-placeholder">[ Upload digital badge image here ]</span>
-                   </div>
-               </li>
-               <li>
-                   <div class="cred-icon">🌿</div>
-                   <div class="cred-info">
-                       <div class="cred-title">Mission Trails Eco Ambassadors — Certificate of Completion</div>
-                       <div class="cred-date">Summer 2024</div>
-                       <span class="badge-placeholder">[ Upload certificate image here ]</span>
-                   </div>
-               </li>
-               <li>
-                   <div class="cred-icon">🏆</div>
-                   <div class="cred-info">
-                       <div class="cred-title">County Assessor Recognition — Outstanding Community Leadership</div>
-                       <div class="cred-date">Awarded by Jorden Marks, San Diego County</div>
-                       <span class="badge-placeholder">[ Upload award photo or letter here ]</span>
-                   </div>
-               </li>
-           </ul>
-           <div style="margin-top:1.5rem;">
-               <strong style="font-size:0.85rem; color:var(--muted);">EDUCATION PATHWAYS</strong>
-               <div class="tags" style="margin-top:0.5rem;">
-                   <span class="tag">Computer Science Pathway</span>
-                   <span class="tag">Engineering Technology Pathway</span>
-                   <span class="tag">Patrick Henry High School</span>
-               </div>
-           </div>
-       </section>
-       <!-- CONTACT -->
-       <section id="contact">
-           <h2>Contact Info</h2>
-           <div class="contact-grid">
-               <div class="contact-item">
-                   <div class="contact-label">EMAIL</div>
-                   <span class="placeholder-link">[ your-email@example.com ]</span>
-               </div>
-               <div class="contact-item">
-                   <div class="contact-label">LINKEDIN</div>
-                   <span class="placeholder-link">[ Add your LinkedIn URL ]</span>
-               </div>
-               <div class="contact-item">
-                   <div class="contact-label">INSTAGRAM (Craft Club)</div>
-                   <span class="placeholder-link">[ @craftclub handle ]</span>
-               </div>
-               <div class="contact-item">
-                   <div class="contact-label">OTHER / GITHUB</div>
-                   <span class="placeholder-link">[ Add any other links ]</span>
-               </div>
-           </div>
-       </section>
-   </main>
-   <footer>
-       <p>&copy; 2026 Ruby Elaine Aguilera · Patrick Henry High School, San Diego, CA</p>
-   </footer>
+ 
+    <!-- HEADER -->
+    <header>
+        <!-- Replace 'REA' with an <img> tag once you have a photo -->
+        <div class="profile-pic-placeholder"><img src="http:///media/fuse/drivefs-d9272547f62d1d3190e076ede37d62a7/root/Screenshot%202026-05-06%201.42.10%20PM.png" alt="Profile Picture"></div>
+        <h1>Ruby Elaine Aguilera</h1>
+        <p class="tagline">Engineer · Maker · Community Leader · Patrick Henry High School, San Diego CA</p>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#robotics">Robotics</a>
+            <a href="#craft-club">Craft Club</a>
+            <a href="#library">Library</a>
+            <a href="#internship">Internship</a>
+            <a href="#credentials">Credentials</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+ 
+    <main>
+ 
+        <!-- ABOUT -->
+        <section id="about">
+            <h2>About Me</h2>
+            <p class="about-bio">
+                I'm a current junior at Patrick Henry High School and this is my website! The purpose of this is to showcase pictures, quotes from people I worked with and projects I made. 
+                
+            My plan is to pursue biomedical engineering in college. Throughout my time in highschool, I have completed two engineering pathways — Computer Science and Engineering Technology. Over the past three years, I've operated industrial machines, led a student club from the ground up, completed an selective environmental summer program, and served as a grant lead for a nonprofit. I love building things: whether that's a robot chassis, games using Java, or a community.
+                
+            </p>
+ 
+            <div class="about-grid" style="margin-top:1.25rem;">
+                <div class="stat-card">
+                    <div class="number">~500+</div>
+                    <div class="label">Personal volunteer hours (est.)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">900+</div>
+                    <div class="label">Club volunteer hours generated</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">3</div>
+                    <div class="label">Years in Patribot Robotics</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">52</div>
+                    <div class="label">Craft Club members (2025–26)</div>
+                </div>
+            </div>
+ 
+            <div style="margin-top:1.25rem;">
+                <strong style="font-size:0.85rem; color:var(--muted);">SKILLS &amp; INTERESTS</strong>
+                <div class="tags">
+                    <span class="tag">Lathe Machine</span>
+                    <span class="tag">Mill Machine</span>
+                    <span class="tag">Laser Cutter</span>
+                    <span class="tag">Screen Printing</span>
+                    <span class="tag">Grant Writing</span>
+                    <span class="tag">Community Organizing</span>
+                    <span class="tag">Java</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">CAD / Onshape</span>
+                    <span class="tag">Crochet</span>
+                    <span class="tag">Distance Running</span>
+                    <span class="tag">Leadership</span>
+                </div>
+            </div>
+        </section>
+ 
+        <!-- ROBOTICS -->
+        <section id="robotics">
+            <h2>Patribot Robotics</h2>
+ 
+            <div class="activity-card">
+                <h3>Marketing Subteam <span class="year-badge">9th Grade · 2023–24</span></h3>
+                <span class="role-badge">Main Laser Cutter Operator</span>
+                <ul>
+                    <li>Produced over 300 theme pins using the laser cutter, from concept brainstorming through final fabrication.</li>
+                    <li>Executed screen printing for team apparel — garment positioning, template alignment, and quality checks.</li>
+                    <li>Created the team's "Terry the Dinosaur" pixel art image.</li>
+                    <li>Scouted 10 robots at a time during competitions (~1.5-hour intervals).</li>
+                </ul>
+                <p class="hours">⏱ 120 hours over 12 weeks — most hours on the marketing subteam</p>
+            </div>
+ 
+            <div class="activity-card">
+                <h3>Build Subteam <span class="year-badge">10th Grade · 2024–25</span></h3>
+                <span class="role-badge">Safety Lead &amp; Main Lathe Operator</span>
+                <ul>
+                    <li>Ordered and prepped emergency kits; enforced shop safety protocols (safety glasses, sleeve-rolling, machine safety).</li>
+                    <li>Operated the lathe to produce custom shafts, aluminum/plastic spacers, and tapped metal hex shafts for robots.</li>
+                    <li>Applied cleaning and maintenance techniques to protect equipment and extend machine life.</li>
+                    <li>Continued competition scouting (~1.5-hour intervals, 10 robots at a time).</li>
+                </ul>
+            </div>
+ 
+            <div class="activity-card">
+                <h3>Build Subteam <span class="year-badge">11th Grade · 2025–26</span></h3>
+                <span class="role-badge">Main Mill Operator &amp; Lathe Trainer</span>
+                <ul>
+                    <li>Milled chassis pieces and frame components for the robot's hopper connection.</li>
+                    <li>Trained 4 team members on the lathe — all got certified; 2 can now fix/upgrade the machine and train others independently.</li>
+                    <li>Expanded scouting role to include pit scouting, communicating with other teams (and trading a crochet turtle pin for a bedazzled robo-dolphin pin 🐬).</li>
+                    <li>Took initiative to teach new scouters how to use the scouting website; they became strong assets on the competition team.</li>
+                </ul>
+            </div>
+        </section>
+ 
+        <!-- CRAFT CLUB -->
+        <section id="craft-club">
+            <h2>Craft Club — Founder &amp; President</h2>
+ 
+            <div class="award-box">
+                <strong>🏆 Recognized by San Diego County Assessor Jorden Marks</strong> for Outstanding Community Leadership — the club accumulated 444 volunteer hours in its first 9 months. Ruby was personally recognized as founder and 2-year president.
+            </div>
+ 
+            <div class="activity-card">
+                <h3>Founded &amp; Led Craft Club <span class="year-badge">10th Grade · 2024–25</span></h3>
+                <span class="role-badge">Founder · President · VP · Secretary (Sem. 1)</span>
+                <ul>
+                    <li>Launched the club from scratch — handled officer roles, meetings, supply runs, and deliveries solo in Semester 1.</li>
+                    <li>Secured a <strong>$500 grant</strong> from the PHHS Foundation and free materials from CVS and Hobby Lobby (crepe paper, pin backings, paracords).</li>
+                    <li>Managed outreach to 10+ volunteer sites: Old Town Tequila Factory, Atria Collwood, Mission Trails Regional Park, Myron B. Green Elementary, San Diego Humane Society, and more.</li>
+                    <li>Maintained Instagram, Discord, and Google Classroom — posting 2x/week and writing step-by-step craft tutorials (crochet, DIY stickers, pipe cleaner flowers).</li>
+                    <li>Tracked accounting and prepared documentation for grant renewal.</li>
+                </ul>
+                <p class="hours">⏱ 444 volunteer hours from 44 members · Fall 2024 – Spring 2025</p>
+            </div>
+ 
+            <div class="activity-card">
+                <h3>Craft Club <span class="year-badge">11th Grade · 2025–26</span></h3>
+                <span class="role-badge">President</span>
+                <ul>
+                    <li>Expanded outreach to new sites: Link Crew, San Diego Floral Association Festival of Trees, San Carlos Branch Library, SD Community Garden, and more.</li>
+                    <li>Secured another <strong>$500 PHHS Foundation grant</strong> + free materials from Dollar Store and Home Depot (paint pallets, paint sticks, 30% off premium exterior paint).</li>
+                    <li>Grew membership to 52 students; managed 456.5 volunteer hours accumulated Fall 2025–Spring 2026.</li>
+                </ul>
+                <p class="hours">⏱ 456.5 volunteer hours from 52 members · Fall 2025 – Spring 2026</p>
+            </div>
+        </section>
+ 
+        <!-- LIBRARY -->
+        <section id="library">
+            <h2>Library Assistant</h2>
+ 
+            <div class="activity-card">
+                <h3>Patrick Henry High School Library</h3>
+                <span class="role-badge">Volunteer Assistant · 10th &amp; 11th Grade</span>
+                <ul>
+                    <li>Reported every school day from 7:30–8:30 AM.</li>
+                    <li>Decorated the library for seasonal holidays; redesigned learning library signs (in collaboration with Craft Club).</li>
+                    <li>Shelved books, managed computer and book check-in/check-out, and assisted during summer orientations.</li>
+                </ul>
+                <p class="hours">⏱ 180 hours per year (ongoing through Summer 2026)</p>
+            </div>
+        </section>
+ 
+        <!-- MISSION TRAILS -->
+        <section id="internship">
+            <h2>Programs &amp; Internships</h2>
+ 
+            <div class="activity-card">
+                <h3>Mission Trails Eco Ambassadors</h3>
+                <span class="role-badge">Summer Program · Certificate of Completion</span>
+                <ul>
+                    <li>Taught children about local animals and led nature walks and hikes through the park.</li>
+                    <li>Received one-on-one instruction from environmental professors on ecology, climate, and human impact on ecosystems.</li>
+                </ul>
+                <p class="hours">⏱ 32.5 hours of community service</p>
+            </div>
+ 
+            <div class="activity-card">
+                <h3>The STEM·E Youth Career Development Program</h3>
+                <span class="role-badge">Internship · Grant Lead · Nov 2025 – Est. Nov 2026</span>
+                <ul>
+                    <li>Onboarded new volunteers by training them on the full grant lifecycle: search → keyword list → letter of interest → proposal → submission.</li>
+                    <li>Led bi-weekly status check-ins for a 10-person grant writing team, keeping milestones and deadlines on track.</li>
+                    <li>Facilitated cross-functional group discussions to identify operational challenges and build peer support.</li>
+                    <li>Managed the team's Google Classroom workspace — keeping resources and documentation up to date for all members.</li>
+                </ul>
+                <p class="hours">⏱ 55 hours worked (biweekly meetings, leadership sessions, independent grant work)</p>
+            </div>
+        </section>
+ 
+        <!-- CREDENTIALS -->
+        <section id="credentials">
+            <h2>Credentials &amp; Certifications</h2>
+ 
+            <ul class="cred-list">
+                <li>
+                    <div class="cred-icon">☕</div>
+                    <div class="cred-info">
+                        <div class="cred-title">IT Specialist — Java</div>
+                        <div class="cred-date">Est. May 13, 2026</div>
+                        <span class="badge-placeholder">[ Upload digital badge image here ]</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="cred-icon">🐍</div>
+                    <div class="cred-info">
+                        <div class="cred-title">IT Specialist — Python</div>
+                        <div class="cred-date">Est. May 21, 2026</div>
+                        <span class="badge-placeholder">[ Upload digital badge image here ]</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="cred-icon">📐</div>
+                    <div class="cred-info">
+                        <div class="cred-title">Onshape CAD Certification</div>
+                        <div class="cred-date">Est. June 2026</div>
+                        <span class="badge-placeholder">[ Upload digital badge image here ]</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="cred-icon">🏭</div>
+                    <div class="cred-info">
+                        <div class="cred-title">HASS Certification — Mill Machine (via EDD course)</div>
+                        <div class="cred-date">Est. Fall 2026 Semester 1</div>
+                        <span class="badge-placeholder">[ Upload digital badge image here ]</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="cred-icon">⚙️</div>
+                    <div class="cred-info">
+                        <div class="cred-title">HASS Certification — Lathe Machine (via EDD course)</div>
+                        <div class="cred-date">Est. Fall 2026 Semester 1</div>
+                        <span class="badge-placeholder">[ Upload digital badge image here ]</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="cred-icon">🌿</div>
+                    <div class="cred-info">
+                        <div class="cred-title">Mission Trails Eco Ambassadors — Certificate of Completion</div>
+                        <div class="cred-date">Summer 2024</div>
+                        <span class="badge-placeholder">[ Upload certificate image here ]</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="cred-icon">🏆</div>
+                    <div class="cred-info">
+                        <div class="cred-title">County Assessor Recognition — Outstanding Community Leadership</div>
+                        <div class="cred-date">Awarded by Jorden Marks, San Diego County</div>
+                        <span class="badge-placeholder">[ Upload award photo or letter here ]</span>
+                    </div>
+                </li>
+            </ul>
+ 
+            <div style="margin-top:1.5rem;">
+                <strong style="font-size:0.85rem; color:var(--muted);">EDUCATION PATHWAYS</strong>
+                <div class="tags" style="margin-top:0.5rem;">
+                    <span class="tag">Computer Science Pathway</span>
+                    <span class="tag">Engineering Technology Pathway</span>
+                    <span class="tag">Patrick Henry High School</span>
+                </div>
+            </div>
+        </section>
+ 
+        <!-- CONTACT -->
+        <section id="contact">
+            <h2>Contact Info</h2>
+ 
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="contact-label">EMAIL</div>
+                    <span class="placeholder-link">[ your-email@example.com ]</span>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">LINKEDIN</div>
+                    <span class="placeholder-link">[ Add your LinkedIn URL ]</span>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">INSTAGRAM (Craft Club)</div>
+                    <span class="placeholder-link">[ @craftclub handle ]</span>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">OTHER / GITHUB</div>
+                    <span class="placeholder-link">[ Add any other links ]</span>
+                </div>
+            </div>
+        </section>
+ 
+    </main>
+ 
+    <footer>
+        <p>&copy; 2026 Ruby Elaine Aguilera · Patrick Henry High School, San Diego, CA</p>
+    </footer>
+ 
 </body>
 </html>
-
-
-
