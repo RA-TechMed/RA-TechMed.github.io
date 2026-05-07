@@ -629,18 +629,100 @@
                    <span class="tag">Patrick Henry High School</span>
                </div>
            </div>
-           <div style="margin-top:1.5rem;">
-               <strong style="font-size:0.85rem; color:var(--muted);">PROJECTS &amp; CODE</strong>
-               <div class="project-links" style="margin-top:0.75rem;">
-                   <a href="https://github.com/phAPCSA25period1/final-project-RA-TechMed" class="project-link"><span class="icon"></span> GitHub</a>
-                   <a href="#" class="project-link"><span class="icon"></span> CodeHS</a>
-                   <a href="#" class="project-link"><span class="icon"></span> Craft Club Instagram</a>
-                   <a href="#" class="project-link"><span class="icon"></span> Patribot Robotics</a>
-               </div>
-               <p style="font-size:0.8rem;color:var(--muted);margin-top:0.6rem;font-style:italic;">Replace the # above with your real links!</p>
-           </div>
-       </section>
- 
+            <div style="margin-top:1.5rem;">
+                <strong style="font-size:0.85rem; color:var(--muted);">PROJECTS &amp; CODE</strong>
+
+                <!-- GITHUB SLIDER -->
+                <div style="margin-top:0.75rem;">
+                    <span style="font-size:0.8rem;font-weight:600;color:var(--accent);">GitHub</span>
+                    <div style="display:flex;align-items:center;gap:0.5rem;margin-top:0.4rem;">
+                        <button onclick="slide('gh',-1)" style="background:var(--accent-light);border:none;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:1rem;color:var(--accent);">&#8249;</button>
+                        <div style="flex:1;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:0.6rem 1rem;font-size:0.9rem;">
+                            <span id="gh-label" style="font-weight:600;color:var(--text);"></span><br>
+                            <a id="gh-link" href="#" target="_blank" style="color:var(--accent);font-size:0.8rem;word-break:break-all;"></a>
+                        </div>
+                        <button onclick="slide('gh',1)" style="background:var(--accent-light);border:none;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:1rem;color:var(--accent);">&#8250;</button>
+                    </div>
+                    <div id="gh-dots" style="text-align:center;margin-top:0.3rem;font-size:0.7rem;color:var(--accent-mid);"></div>
+                </div>
+
+                <!-- CODEHS SLIDER -->
+                <div style="margin-top:0.85rem;">
+                    <span style="font-size:0.8rem;font-weight:600;color:var(--accent);">CodeHS</span>
+                    <div style="display:flex;align-items:center;gap:0.5rem;margin-top:0.4rem;">
+                        <button onclick="slide('chs',-1)" style="background:var(--accent-light);border:none;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:1rem;color:var(--accent);">&#8249;</button>
+                        <div style="flex:1;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:0.6rem 1rem;font-size:0.9rem;">
+                            <span id="chs-label" style="font-weight:600;color:var(--text);"></span><br>
+                            <a id="chs-link" href="#" target="_blank" style="color:var(--accent);font-size:0.8rem;word-break:break-all;"></a>
+                        </div>
+                        <button onclick="slide('chs',1)" style="background:var(--accent-light);border:none;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:1rem;color:var(--accent);">&#8250;</button>
+                    </div>
+                    <div id="chs-dots" style="text-align:center;margin-top:0.3rem;font-size:0.7rem;color:var(--accent-mid);"></div>
+                </div>
+
+                <!-- INSTAGRAM SLIDER -->
+                <div style="margin-top:0.85rem;">
+                    <span style="font-size:0.8rem;font-weight:600;color:var(--accent);">Instagram</span>
+                    <div style="display:flex;align-items:center;gap:0.5rem;margin-top:0.4rem;">
+                        <button onclick="slide('ig',-1)" style="background:var(--accent-light);border:none;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:1rem;color:var(--accent);">&#8249;</button>
+                        <div style="flex:1;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:0.6rem 1rem;font-size:0.9rem;">
+                            <span id="ig-label" style="font-weight:600;color:var(--text);"></span><br>
+                            <a id="ig-link" href="#" target="_blank" style="color:var(--accent);font-size:0.8rem;word-break:break-all;"></a>
+                        </div>
+                        <button onclick="slide('ig',1)" style="background:var(--accent-light);border:none;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:1rem;color:var(--accent);">&#8250;</button>
+                    </div>
+                    <div id="ig-dots" style="text-align:center;margin-top:0.3rem;font-size:0.7rem;color:var(--accent-mid);"></div>
+                </div>
+
+                <script>
+                    const sliders = {
+                        gh: {
+                            index: 0,
+                            items: [
+                                { label: "GitHub Project 1", url: "https://github.com/phAPCSA25period1/final-project-RA-TechMed" }, // ← INSERT your 1st GitHub link here (label = display name)
+                                { label: "GitHub Project 2", url: "#" }, // ← INSERT your 2nd GitHub link here
+                                { label: "GitHub Project 3", url: "#" }  // ← INSERT your 3rd GitHub link here
+                            ]
+                        },
+                        chs: {
+                            index: 0,
+                            items: [
+                                { label: "CodeHS Project 1", url: "#" }, // ← INSERT your 1st CodeHS link here
+                                { label: "CodeHS Project 2", url: "#" }, // ← INSERT your 2nd CodeHS link here
+                                { label: "CodeHS Project 3", url: "#" }  // ← INSERT your 3rd CodeHS link here
+                            ]
+                        },
+                        ig: {
+                            index: 0,
+                            items: [
+                                { label: "Craft Club Instagram", url: "#" },  // ← INSERT Craft Club Instagram URL here
+                                { label: "Patribot Robotics Instagram", url: "#" } // ← INSERT Patribot Instagram URL here
+                            ]
+                        }
+                    };
+
+                    function renderSlider(key) {
+                        const s = sliders[key];
+                        const item = s.items[s.index];
+                        document.getElementById(key + "-label").textContent = item.label;
+                        const link = document.getElementById(key + "-link");
+                        link.href = item.url;
+                        link.textContent = item.url === "#" ? "[ link coming soon ]" : item.url;
+                        const dots = s.items.map((_, i) => i === s.index ? "●" : "○").join(" ");
+                        document.getElementById(key + "-dots").textContent = dots;
+                    }
+
+                    function slide(key, dir) {
+                        const s = sliders[key];
+                        s.index = (s.index + dir + s.items.length) % s.items.length;
+                        renderSlider(key);
+                    }
+
+                    renderSlider("gh");
+                    renderSlider("chs");
+                    renderSlider("ig");
+                </script>
+            </div>
        <!-- CONTACT -->
        <section id="contact">
            <h2>Contact Info</h2>
