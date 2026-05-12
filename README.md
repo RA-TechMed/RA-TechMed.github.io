@@ -99,7 +99,7 @@ Through my leadership roles, I've:
 - **Email**: [ruby.elaine.aguilera@gmail.com]
 - **LinkedIn**: [linkedin.com/in/ruby-aguilera-703b063b9]
 - **Instagram**: [@phhscraftclub]
-- **GitHub**: [Repository links and coding projects]
+- **GitHub**: [link in website]
 
 ---
 
