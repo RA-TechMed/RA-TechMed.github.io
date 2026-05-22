@@ -58,7 +58,7 @@ Daily volunteer work (7:30-8:30 AM) including book shelving, computer management
 
 ### Programs & Internships
 - **Mission Trails Eco Ambassadors**: Taught children about local ecology, received instruction from environmental professors
-- **STEM·E Internship**: Hands-on engineering experience
+- **STEM·E Internship**: Virual grant writing experience
 
 ---
 
