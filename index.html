@@ -740,6 +740,20 @@
                     </div>
                     <div id="ig-dots" style="text-align:center;margin-top:0.3rem;font-size:0.7rem;color:var(--accent-mid);"></div>
                 </div>
+                <!-- Onshape Slider -->
+                <div style="margin-top:0.85rem;">
+                    <span style="font-size:0.8rem;font-weight:600;color:var(--accent);">Onshape</span>
+                    <div style="display:flex;align-items:center;gap:0.5rem;margin-top:0.4rem;">
+                        <button onclick="slide('t',-1)" style="background:var(--accent-light);border:none;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:1rem;color:var(--accent);">&#8249;</button>
+                        <div style="flex:1;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:0.6rem 1rem;font-size:0.9rem;">
+                            <span id="t-label" style="font-weight:600;color:var(--text);"></span><br>
+                            <a id="t-link" href="#" target="_blank" style="color:var(--accent);font-size:0.8rem;word-break:break-all;display:block;"></a>
+                            <a id="t-slideshow-link" href="#" target="_blank" style="color:var(--accent);font-size:0.8rem;word-break:break-all;display:block;margin-top:0.15rem;"></a>
+                        </div>
+                        <button onclick="slide('t',1)" style="background:var(--accent-light);border:none;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:1rem;color:var(--accent);">&#8250;</button>
+                    </div>
+                    <div id="t-dots" style="text-align:center;margin-top:0.3rem;font-size:0.7rem;color:var(--accent-mid);"></div>
+                </div>
 
                 <script>
                     const sliders = {
@@ -765,6 +779,14 @@
                                 { label: "Craft Club Instagram", url: "https://www.instagram.com/phhscraftclub/" },  // ← INSERT Craft Club Instagram URL here
                                 { label: "Patribot Robotics Instagram", url: "https://www.instagram.com/patribots4738/" } // ← INSERT Patribot Instagram URL here
                             ]
+                        },
+                        t: {
+                            index: 0,
+                            items: [
+                                { label: "Onshape Project 1", url: "#", slideshow: "#" }, // ← INSERT your 1st Onshape project URL and slideshow link here
+                                { label: "Onshape Project 2", url: "#", slideshow: "#" }, // ← INSERT your 2nd Onshape project URL and slideshow link here
+                                { label: "Onshape Project 3", url: "#", slideshow: "#" }  // ← INSERT your 3rd Onshape project URL and slideshow link here
+                            ]
                         }
                     };
 
@@ -774,7 +796,13 @@
                         document.getElementById(key + "-label").textContent = item.label;
                         const link = document.getElementById(key + "-link");
                         link.href = item.url;
-                        link.textContent = item.url === "#" ? "[ link coming soon ]" : item.url;
+                        link.textContent = item.url === "#" ? "[ Onshape link coming soon ]" : "Open Onshape";
+                        const slideshowLink = document.getElementById(key + "-slideshow-link");
+                        if (slideshowLink) {
+                            slideshowLink.href = item.slideshow || "#";
+                            slideshowLink.textContent = item.slideshow && item.slideshow !== "#" ? "View slideshow" : "[ slideshow link coming soon ]";
+                            slideshowLink.style.opacity = item.slideshow && item.slideshow !== "#" ? "1" : "0.75";
+                        }
                         const dots = s.items.map((_, i) => i === s.index ? "●" : "○").join(" ");
                         document.getElementById(key + "-dots").textContent = dots;
                     }
@@ -788,6 +816,7 @@
                     renderSlider("gh");
                     renderSlider("chs");
                     renderSlider("ig");
+                    renderSlider("t");
                 </script>
             </div>
        </section>
