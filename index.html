@@ -796,11 +796,11 @@
                         document.getElementById(key + "-label").textContent = item.label;
                         const link = document.getElementById(key + "-link");
                         link.href = item.url;
-                        link.textContent = item.url === "#" ? "[link coming soon ]" : "Open Onshape";
+                        link.textContent = item.url === "#" ? "[link coming soon ]" : item.url;
                         const slideshowLink = document.getElementById(key + "-slideshow-link");
                         if (slideshowLink) {
                             slideshowLink.href = item.slideshow || "#";
-                            slideshowLink.textContent = item.slideshow && item.slideshow !== "#" ? "View slideshow" : "[ slideshow link coming soon ]";
+                            slideshowLink.textContent = item.slideshow && item.slideshow !== "#" ? item.slideshow : "[ slideshow link coming soon ]";
                             slideshowLink.style.opacity = item.slideshow && item.slideshow !== "#" ? "1" : "0.75";
                         }
                         const dots = s.items.map((_, i) => i === s.index ? "●" : "○").join(" ");
