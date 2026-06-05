@@ -2,7 +2,7 @@
 
 ## 🎯 What is this?
 
-This is my personal digital portfolio website showcasing my journey as a high school student at Patrick Henry High School in San Diego, CA. As a junior pursuing biomedical engineering, this site highlights my experiences in robotics, community leadership, engineering pathways, and volunteer work. It demonstrates my skills in web development, community organizing, and technical expertise gained through hands-on projects and leadership roles.
+This is my personal digital portfolio website showcasing my journey as a high school student at Patrick Henry High School in San Diego, CA. At this time, I am a junior pursuing biomedical engineering. This site highlights my experiences in engineering pathways, robotics, community leadership, and volunteer work. It demonstrates my skills in web development, community organizing, and technical expertise gained through hands-on projects and leadership roles.
 
 ---
 
