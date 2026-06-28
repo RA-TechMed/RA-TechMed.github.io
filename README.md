@@ -2,7 +2,7 @@
 
 ## 🎯 What is this?
 
-This is my personal digital portfolio website showcasing my journey as a high school student at Patrick Henry High School in San Diego, CA. As a junior pursuing biomedical engineering, this site highlights my experiences in robotics, community leadership, engineering pathways, and volunteer work. It demonstrates my skills in web development, community organizing, and technical expertise gained through hands-on projects and leadership roles.
+This is my personal digital portfolio website showcasing my journey as a high school student at Patrick Henry High School in San Diego, CA. At this time, I am a junior pursuing biomedical engineering. This site highlights my experiences in engineering pathways, robotics, community leadership, and volunteer work. It demonstrates my skills in web development, community organizing, and technical expertise gained through hands-on projects and leadership roles.
 
 ---
 
@@ -28,7 +28,7 @@ I'm currently a junior at Patrick Henry High School, planning to pursue biomedic
 
 ### Key Achievements
 - **900+ Craft Club Volunteer Hours Generated** through community outreach and club leadership
-- **500+ Personal Volunteer Hours** across various initiatives
+- **700+ Personal Volunteer Hours** across various initiatives
 - **3 Years in Patribot Robotics** with progressive leadership roles
 - **52 Craft Club Members Led** in the 2025-26 school year
 - Secured **$500 PHHS Foundation grant** for club activities
@@ -54,7 +54,7 @@ I'm currently a junior at Patrick Henry High School, planning to pursue biomedic
 Founded and led a student craft club that expanded to 52 members, secured grants, and generated hundreds of volunteer hours through community outreach to local organizations and events.
 
 ### Library Assistant
-Daily volunteer work (7:30-8:30 AM) including book shelving, computer management, holiday decorations, and summer orientation assistance.
+Daily volunteer work (7:30-8:30 AM), including book shelving, computer management, holiday decorations, and summer orientation assistance.
 
 ### Programs & Internships
 - **Mission Trails Eco Ambassadors**: Taught children about local ecology, received instruction from environmental professors
@@ -88,7 +88,7 @@ I've included links to my interactive Python projects:
 
 Through my leadership roles, I've:
 - Generated over 900 volunteer hours for community service
-- Expanded club outreach to new sites including libraries, community gardens, and local festivals
+- Expanded club outreach to new sites, including libraries, community gardens, and local festivals
 - Trained peers in technical skills and safety protocols
 - Secured funding for educational and community programs
 
