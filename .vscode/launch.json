@@ -3,8 +3,9 @@
         {
             "type": "chrome",
             "request": "launch",
-            "name": "Launch index.html",
-            "file": "${workspaceFolder}/index.html"
+            "name": "Open portfolio in Chrome",
+            "url": "https://ra-techmed.github.io/",
+            "webRoot": "${workspaceFolder}"
         }
     ]
 }
