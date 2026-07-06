@@ -315,7 +315,7 @@
        .award-box strong { color: #7a5c00; }
  
        /* CREDENTIALS */
-       .cred-list { list-style: none; padding: 0; }
+       .cred-list { list-style: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
        .cred-list li {
            display: flex;
            align-items: flex-start;
@@ -420,8 +420,8 @@
            </p>
            <div class="about-grid" style="margin-top:1.25rem;">
                <div class="stat-card"><div class="number">900+</div><div class="label">Craft Club Volunteer Hours Generated</div></div>
-               <div class="stat-card"><div class="number">500+</div><div class="label">Personal Volunteer Hours (est.)</div></div>
-               <div class="stat-card"><div class="number">3</div><div class="label">Years in Patribot Robotics</div></div>
+               <div class="stat-card"><div class="number">700+</div><div class="label">Personal Volunteer Hours (est.)</div></div>
+               <div class="stat-card"><div class="number">6</div><div class="label">Years in FIRST Robotics (Lego League and Robotics Competition)</div></div>
                <div class="stat-card"><div class="number">52</div><div class="label">Craft Club Members Led (2025–26)</div></div>
            </div>
            <div style="margin-top:1.25rem;">
@@ -429,7 +429,7 @@
                <div class="tags">
                    <span class="tag">Community Organizing</span><span class="tag">Leadership</span><span class="tag">Grant Writing</span>
                    <span class="tag">Mill Machine</span><span class="tag">Lathe Machine</span><span class="tag">Laser Cutter</span>
-                   <span class="tag">Python</span><span class="tag">Java</span><span class="tag">CAD / Onshape</span>
+                   <span class="tag">Python</span><span class="tag">Java</span><span class="tag">CAD / Onshape</span><span class= "tag">MuJoCo- Adv. Physics Simulator</span>
                    <span class="tag">Google Workplace</span><span class= "tag">Canva Graphics</span>
                </div>
            </div>
@@ -726,18 +726,19 @@
                     <div id="chs-dots" style="text-align:center;margin-top:0.3rem;font-size:0.7rem;color:var(--accent-mid);"></div>
                 </div>
 
-                <!-- INSTAGRAM SLIDER -->
+                <!-- ONSHAPE SLIDER -->
                 <div style="margin-top:0.85rem;">
-                    <span style="font-size:0.8rem;font-weight:600;color:var(--accent);">Instagram</span>
+                    <span style="font-size:0.8rem;font-weight:600;color:var(--accent);">Onshape</span>
                     <div style="display:flex;align-items:center;gap:0.5rem;margin-top:0.4rem;">
-                        <button onclick="slide('ig',-1)" style="background:var(--accent-light);border:none;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:1rem;color:var(--accent);">&#8249;</button>
+                        <button onclick="slide('os',-1)" style="background:var(--accent-light);border:none;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:1rem;color:var(--accent);">&#8249;</button>
                         <div style="flex:1;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:0.6rem 1rem;font-size:0.9rem;">
-                            <span id="ig-label" style="font-weight:600;color:var(--text);"></span><br>
-                            <a id="ig-link" href="#" target="_blank" style="color:var(--accent);font-size:0.8rem;word-break:break-all;"></a>
+                            <span id="os-label" style="font-weight:600;color:var(--text);"></span><br>
+                            <a id="os-doc-link" href="#" target="_blank" style="color:var(--accent);font-size:0.8rem;word-break:break-all;display:block;margin-bottom:0.3rem;"></a>
+                            <a id="os-slide-link" href="#" target="_blank" style="color:var(--accent);font-size:0.8rem;word-break:break-all;display:block;"></a>
                         </div>
-                        <button onclick="slide('ig',1)" style="background:var(--accent-light);border:none;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:1rem;color:var(--accent);">&#8250;</button>
+                        <button onclick="slide('os',1)" style="background:var(--accent-light);border:none;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:1rem;color:var(--accent);">&#8250;</button>
                     </div>
-                    <div id="ig-dots" style="text-align:center;margin-top:0.3rem;font-size:0.7rem;color:var(--accent-mid);"></div>
+                    <div id="os-dots" style="text-align:center;margin-top:0.3rem;font-size:0.7rem;color:var(--accent-mid);"></div>
                 </div>
 
                 <script>
@@ -758,11 +759,12 @@
                                 { label: "CodeHS Project 3", url: "#" }  // ← INSERT your 3rd CodeHS link here
                             ]
                         },
-                        ig: {
+                        os: {
                             index: 0,
                             items: [
-                                { label: "Craft Club Instagram", url: "https://www.instagram.com/phhscraftclub/" },  // ← INSERT Craft Club Instagram URL here
-                                { label: "Patribot Robotics Instagram", url: "https://www.instagram.com/patribots4738/" } // ← INSERT Patribot Instagram URL here
+                                { label: "Onshape Project 1", docUrl: "#", slideUrl: "#" }, // ← INSERT Onshape document link in docUrl and slideshow link in slideUrl
+                                { label: "Onshape Project 2", docUrl: "#", slideUrl: "#" }, // ← INSERT Onshape document link in docUrl and slideshow link in slideUrl
+                                { label: "Onshape Project 3", docUrl: "#", slideUrl: "#" }  // ← INSERT Onshape document link in docUrl and slideshow link in slideUrl
                             ]
                         }
                     };
@@ -771,9 +773,23 @@
                         const s = sliders[key];
                         const item = s.items[s.index];
                         document.getElementById(key + "-label").textContent = item.label;
-                        const link = document.getElementById(key + "-link");
-                        link.href = item.url;
-                        link.textContent = item.url === "#" ? "[ link coming soon ]" : item.url;
+                        
+                        if (key === "os") {
+                            // Special handling for Onshape slider with two links
+                            const docLink = document.getElementById(key + "-doc-link");
+                            docLink.href = item.docUrl;
+                            docLink.textContent = item.docUrl === "#" ? "[ document link coming soon ]" : "📄 Onshape Document: " + item.docUrl;
+                            
+                            const slideLink = document.getElementById(key + "-slide-link");
+                            slideLink.href = item.slideUrl;
+                            slideLink.textContent = item.slideUrl === "#" ? "[ slideshow link coming soon ]" : "📊 Slideshow: " + item.slideUrl;
+                        } else {
+                            // Standard handling for GitHub and CodeHS
+                            const link = document.getElementById(key + "-link");
+                            link.href = item.url;
+                            link.textContent = item.url === "#" ? "[ link coming soon ]" : item.url;
+                        }
+                        
                         const dots = s.items.map((_, i) => i === s.index ? "●" : "○").join(" ");
                         document.getElementById(key + "-dots").textContent = dots;
                     }
@@ -786,7 +802,7 @@
 
                     renderSlider("gh");
                     renderSlider("chs");
-                    renderSlider("ig");
+                    renderSlider("os");
                 </script>
             </div>
        </section>
